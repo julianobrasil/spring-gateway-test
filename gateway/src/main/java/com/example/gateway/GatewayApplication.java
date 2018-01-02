@@ -20,6 +20,7 @@ public class GatewayApplication {
         return builder.routes()
                 .route(r -> r.path("/service/**")
                         .rewritePath("/service/(?<path>.*)", "/${path}")
+                        .secureHeaders()
                         .uri("lb://mySimpleService"))
                 .build();
 
