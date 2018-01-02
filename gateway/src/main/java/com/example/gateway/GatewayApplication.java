@@ -20,7 +20,8 @@ public class GatewayApplication {
         return builder.routes()
                 .route(r -> r.path("/service/**")
                         .rewritePath("/service/(?<path>.*)", "/${path}")
-                        .uri("lb://mySimpleService"))
+//                        .uri("lb://mySimpleService"))
+                        .uri("https://app-generico.herokuapp.com"))
                 .build();
 
     }
