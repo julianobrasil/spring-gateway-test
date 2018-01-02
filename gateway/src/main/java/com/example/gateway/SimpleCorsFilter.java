@@ -24,7 +24,10 @@ public class SimpleCorsFilter {
     @Bean
     public WebFilter corsFilter() {
         return (ServerWebExchange ctx, WebFilterChain chain) -> {
+            System.out.println("Fui chamado");
             ServerHttpRequest request = ctx.getRequest();
+            this.showRequestHeaders(request);
+            this.showResponseHeaders(ctx.getResponse());
             if (CorsUtils.isCorsRequest(request)) {
                 ServerHttpResponse response = ctx.getResponse();
                 HttpHeaders headers = response.getHeaders();
@@ -40,5 +43,17 @@ public class SimpleCorsFilter {
             }
             return chain.filter(ctx);
         };
+    }
+
+    private void showRequestHeaders(ServerHttpRequest request) {
+        System.out.println("------PRINTING REQUEST HEADERS-----");
+        request.getHeaders().forEach((k, v) -> System.out.println(k + " => " + v));
+        System.out.println("------END OF PRINTING REQUEST HEADERS-----");
+    }
+
+    private void showResponseHeaders(ServerHttpResponse response) {
+        System.out.println("------PRINTING RESPONSE HEADERS-----");
+        response.getHeaders().forEach((k, v) -> System.out.println(k + " => " + v));
+        System.out.println("------END OF PRINTING RESPONSE HEADERS-----");
     }
 }

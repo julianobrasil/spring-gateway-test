@@ -22,6 +22,7 @@ public class GatewayApplication {
                         .rewritePath("/service/(?<path>.*)", "/${path}")
                         .uri("lb://mySimpleService"))
                 .build();
+
     }
 }
 
