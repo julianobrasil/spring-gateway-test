@@ -7,10 +7,11 @@ spring:
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: springcloud-gateway.herokuapp.com
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+#      defaultZone: http://localhost:8761/eureka/
+      defaultZone: https://eureka-unialfa.herokuapp.com/eureka/
     healthcheck: true
 debug: true
 #trace: true
