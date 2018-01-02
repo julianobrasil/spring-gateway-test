@@ -17,11 +17,9 @@ public class GatewayApplication {
 
     @Bean
     public RouteLocator routes(RouteLocatorBuilder builder) {
-        // não sei bem o que está acontecendo ainda....
         return builder.routes()
                 .route(r -> r.path("/service/**")
                         .rewritePath("/service/(?<path>.*)", "/${path}")
-                        .secureHeaders()
                         .uri("lb://mySimpleService"))
                 .build();
 
