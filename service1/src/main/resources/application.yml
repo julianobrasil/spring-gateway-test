@@ -2,10 +2,11 @@
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+#      defaultZone: http://localhost:8761/eureka/
+      defaultZone: https://eureka-unialfa.herokuapp.com/eureka/
     healthcheck: true
   instance:
-    hostname: localhost
+    hostname: app-generico.herokuapp.com
 
 server:
   port: 9000
